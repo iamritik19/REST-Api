@@ -1,6 +1,16 @@
 const express=require('express');
 const app=express();
 const port=3000;
+//importing mongoose
+const mongoose=require('mongoose');
+//connecting establishment with databases
+mongoose.connect('mongodb://127.0.0.1:27017/employees')
+.then(()=>{
+    console.log("mongo setup done")
+})
+.catch(err=>{
+    console.log("mongo error",err);
+})
 app.route('/api/route')
 .get((req,res)=>{
     //get data from mongo server(read)
